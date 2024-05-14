@@ -1,0 +1,52 @@
+<br />
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+        <div class = direita>
+        <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="new()">novo</button>
+    </div>
+      <table class="table table-striped" border="1">
+        <thead>
+            
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+            @for (livro of lista; track $index){
+                
+          <tr>
+            <td>{{livro.id}}</td>
+            <td>{{livro.nome}}</td>
+            <td>{{livro.autor.nome}}</td>
+            
+            <td class = direita>
+                <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="edit(livro)">editar</button>
+            
+                <button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="deletar()">deletar</button>   
+            </td>
+          </tr>
+        }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<ng-template #modalLivroDetalhe>
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-livrodetails></app-livrodetails>
+  </div>
+</ng-template>
